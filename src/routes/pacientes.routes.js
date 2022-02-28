@@ -11,7 +11,8 @@ router
 
   router
     .route('/pacientes/id:')
-    .put(pacienteCtrl.modificarPaciente);
+    .put(pacientesCtrl.putPaciente)
+    .delete(pacienteCtrl.deletePaciente)
 
   
 

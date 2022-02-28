@@ -58,13 +58,32 @@ pacienteCtrl.postPaciente = async (req, res) => {
     });
   }
 };
-//responde a petición PUT
-pacienteCtrl.modificarPaciente = async(req, res)=>{
-  
-  const objModificar = req.body;
-  const parametro = req.body.id;
-  const objParaModificar = await Paciente.findOneAndUpdate(parametro, objModificar);
-  res.status(200).json(objParaModificar);
+
+pacientesCtrl.putPaciente = async (req, res) => {
+  try{
+
+  await Producto.findByIdAndUpdate(req,params.id, req.body);
+  res.status(200).json({mensaje:'se edito correnctamente'})
+
+  }catch (error) {
+    console.log(error);
+    res.status(400).json({
+      mensaje: ' Error al intentar editar un paciente ',
+    });
+  }
+}
+
+pacienteCtrl.deletePaciente = async (req, res) =>{
+  try{
+    await Producto.findByIdAndUpdateAndDelete(req, params.id);
+    res.status(200).json({mensaje: 'el producto fue eliminado'});
+  }
+  catch(error) {
+    console.log(error);
+    res.status(400).json({
+      mensaje: ' Error al intentar editar un paciente ',
+    });
+  }
 }
 
 
